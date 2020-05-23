@@ -25,11 +25,16 @@ public class SignUpController {
         Parent root = FXMLLoader.load(getClass().getResource("../primary.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX");
         stage.show();
     }
 
     public void signUp(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
         DataManager.addUser(new User(username.getText(), password.getText()));
         signUpMessage.setText("successfully");
+        Parent root = FXMLLoader.load(getClass().getResource("../panel.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

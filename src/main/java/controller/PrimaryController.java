@@ -15,6 +15,7 @@ public class PrimaryController {
         Parent root = FXMLLoader.load(getClass().getResource("../login.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX — Login");
         stage.show();
     }
 
@@ -22,6 +23,7 @@ public class PrimaryController {
         Parent root = FXMLLoader.load(getClass().getResource("../signup.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX — SignUp");
         stage.show();
     }
 }

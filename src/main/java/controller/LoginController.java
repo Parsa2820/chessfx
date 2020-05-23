@@ -15,6 +15,10 @@ public class LoginController {
         Parent root = FXMLLoader.load(getClass().getResource("../primary.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX");
         stage.show();
+    }
+
+    public void login(MouseEvent mouseEvent) {
     }
 }
