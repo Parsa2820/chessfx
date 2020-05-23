@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.DataManager;
@@ -30,11 +28,15 @@ public class SignUpController {
     }
 
     public void signUp(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
+        if (DataManager.getUserByUsername(username.getText()) != null) {
+            signUpMessage.setText("This username is taken. Please try another username.");
+            // Todo change color to red
+            return;
+        }
         DataManager.addUser(new User(username.getText(), password.getText()));
-        signUpMessage.setText("successfully");
-        Parent root = FXMLLoader.load(getClass().getResource("../panel.fxml"));
-        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
+        Alert signedUpSuccessfully = new Alert(Alert.AlertType.INFORMATION, "User successfully created",
+                ButtonType.OK);
+        signedUpSuccessfully.showAndWait();
+        goToPrimaryMenu(mouseEvent);
     }
 }

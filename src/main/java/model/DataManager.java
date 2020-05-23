@@ -43,4 +43,14 @@ public class DataManager {
         users.add(user);
         updateUsers(users);
     }
+
+    public static User getUserByUsername(String username) throws IOException, ClassNotFoundException {
+        ArrayList<User> users = getUsersSer();
+        for (User user : users) {
+            if (user.getUsername().equalsIgnoreCase(username)) {
+                return user;
+            }
+        }
+        return null;
+    }
 }

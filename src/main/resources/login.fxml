@@ -19,7 +19,7 @@
         </HBox>
         <HBox alignment="CENTER" spacing="10">
             <Label>Password : </Label>
-            <PasswordField promptText="Password"></PasswordField>
+            <PasswordField fx:id="password" promptText="Password"></PasswordField>
         </HBox>
     </VBox>
     <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" spacing="10" >
