@@ -14,4 +14,8 @@ public class GraphicalUserInterface extends Application {
         stage.setTitle("ChessFX");
         stage.show();
     }
+
+    public static void runGui(String[] args) {
+        launch(args);
+    }
 }
