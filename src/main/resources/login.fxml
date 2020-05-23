@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.LoginController"
+            alignment="CENTER"
+            prefHeight="400.0" prefWidth="600.0"
+            vgap="10"
+            hgap="10">
+    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="CENTER" GridPane.valignment="TOP" spacing="10">
+        <Label fx:id="loginMessage"></Label>
+        <Label>Please enter your login information and click Login</Label>
+        <HBox alignment="CENTER" spacing="10">
+            <Label>Username : </Label>
+            <TextField fx:id="username" promptText="Username" GridPane.halignment="RIGHT"></TextField>
+        </HBox>
+        <HBox alignment="CENTER" spacing="10">
+            <Label>Password : </Label>
+            <PasswordField promptText="Password"></PasswordField>
+        </HBox>
+    </VBox>
+    <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" spacing="10" >
+        <Button HBox.hgrow="ALWAYS" maxWidth="200" onMouseClicked="#goToPrimaryMenu">Back</Button>
+        <Button HBox.hgrow="ALWAYS" maxWidth="200">Login</Button>
+    </HBox>
+</GridPane>
