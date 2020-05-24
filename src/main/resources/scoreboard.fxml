@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.skin.TableHeaderRow?>
+<?import javafx.collections.FXCollections?>
+<?import model.User?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="controller.ScoreboardController"
+          prefHeight="400.0" prefWidth="600.0"
+          hgap="10" vgap="10" alignment="CENTER">
+    <Label GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">Scoreboard</Label>
+    <ScrollPane GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <TableView>
+            <columns>
+                <TableColumn text="Username"/>
+                <TableColumn text="Score"/>
+                <TableColumn text="Win"/>
+                <TableColumn text="Draw"/>
+                <TableColumn text="Lose"/>
+            </columns>
+        </TableView>
+    </ScrollPane>
+</GridPane>

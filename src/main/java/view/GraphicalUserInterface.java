@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class GraphicalUserInterface extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent primary = FXMLLoader.load(getClass().getResource("../primary.fxml"));
+        Parent primary = FXMLLoader.load(getClass().getResource("../scoreboard.fxml"));
         stage.setScene(new Scene(primary));
         stage.setTitle("ChessFX");
         stage.show();

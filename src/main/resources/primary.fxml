@@ -5,6 +5,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.PrimaryController"
@@ -13,9 +14,7 @@
     <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="10">
         <Label>ChessFX</Label>
         <ImageView>
-            <image>
-                <Image url="ChessPiecesArray.png"></Image>
-            </image>
+            <Image url="ChessPiecesArray.png"/>
         </ImageView>
         <Button onMouseClicked="#onLoginButtonClick">Login</Button>
         <Button onMouseClicked="#onSignUpButtonClick">Sign up</Button>

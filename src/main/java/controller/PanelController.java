@@ -28,8 +28,12 @@ public class PanelController implements Initializable {
         stage.show();
     }
 
-    public void onScoreboardClick(MouseEvent mouseEvent) {
-
+    public void onScoreboardClick(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../scoreboard.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX — Scoreboard");
+        stage.show();
     }
 
     public void onNewGameButtonClick(MouseEvent mouseEvent) {
