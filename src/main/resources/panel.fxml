@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.PanelController"
-            prefHeight="400.0" prefWidth="600.0">
-</AnchorPane>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="controller.PanelController"
+          alignment="CENTER"
+          prefHeight="400.0" prefWidth="600.0">
+    <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="10">
+        <Label fx:id="greetMessage">kk</Label>
+        <Button onMouseClicked="#onNewGameButtonClick">New game</Button>
+        <Button onMouseClicked="#onScoreboardClick">Scoreboard</Button>
+        <Button onMouseClicked="#onLogoutClick">Logout</Button>
+    </VBox>
+</GridPane>

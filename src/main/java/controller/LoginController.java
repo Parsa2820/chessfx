@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.DataManager;
+import model.Session;
 import model.User;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class LoginController {
             loginMessage.setText("Wrong password.");
             return;
         }
+        Session.getSingletonInstance().setOnlineUser(user);
         Parent root = FXMLLoader.load(getClass().getResource("../panel.fxml"));
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
