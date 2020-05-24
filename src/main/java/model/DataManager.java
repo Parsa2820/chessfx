@@ -53,4 +53,15 @@ public class DataManager {
         }
         return null;
     }
+
+    public static void deleteUser(String username) throws IOException, ClassNotFoundException {
+        ArrayList<User> users = getUsersSer();
+        for (User user : users) {
+            if (user.getUsername().equalsIgnoreCase(username)) {
+                users.remove(user);
+                updateUsers(users);
+                return;
+            }
+        }
+    }
 }

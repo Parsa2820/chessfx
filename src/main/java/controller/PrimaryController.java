@@ -26,4 +26,24 @@ public class PrimaryController {
         stage.setTitle("ChessFX — SignUp");
         stage.show();
     }
+
+    public void onDeleteUserButtonClick(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../delete.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX — Delete user");
+        stage.show();
+    }
+
+    public void onChangePasswordClick(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../change.fxml"));
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle("ChessFX — Change password");
+        stage.show();
+    }
+
+    public void exit(MouseEvent mouseEvent) {
+        System.exit(0);
+    }
 }

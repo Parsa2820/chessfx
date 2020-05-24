@@ -19,5 +19,8 @@
         </ImageView>
         <Button onMouseClicked="#onLoginButtonClick">Login</Button>
         <Button onMouseClicked="#onSignUpButtonClick">Sign up</Button>
+        <Button onMouseClicked="#onDeleteUserButtonClick">Delete user</Button>
+        <Button onMouseClicked="#onChangePasswordClick">Change password</Button>
+        <Button onMouseClicked="#exit">Exit</Button>
     </VBox>
 </GridPane>
