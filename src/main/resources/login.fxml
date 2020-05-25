@@ -23,7 +23,7 @@
         </HBox>
     </VBox>
     <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" spacing="10" >
-        <Button HBox.hgrow="ALWAYS" maxWidth="200" onMouseClicked="#goToPrimaryMenu">Back</Button>
+        <Button HBox.hgrow="ALWAYS" maxWidth="200" onMouseClicked="#back">Back</Button>
         <Button HBox.hgrow="ALWAYS" maxWidth="200" onMouseClicked="#login">Login</Button>
     </HBox>
 </GridPane>

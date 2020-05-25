@@ -47,6 +47,6 @@
             </columns>
         </TableView>
     </ScrollPane>
-    <Button onMouseClicked="#goToPanel" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+    <Button onMouseClicked="#back" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.halignment="CENTER"
             GridPane.hgrow="ALWAYS" >Back</Button>
 </GridPane>
