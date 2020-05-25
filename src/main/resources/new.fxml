@@ -12,11 +12,21 @@
           fx:controller="controller.NewGameController"
           prefHeight="400.0" prefWidth="600.0"
           hgap="10" vgap="10" alignment="CENTER">
-    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
+
+    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" spacing="10">
+        <Label fx:id="newGameMessage"/>
         <Label>Turn limit</Label>
         <Label>(Put 0 for no limit)</Label>
-        <NumberAxis
-
+        <TextField fx:id="turnLimitTextField"></TextField>
+        <Label>Undo move</Label>
+        <TextField fx:id="undoMoveTextField"></TextField>
+        <Label>Opponent username</Label>
+        <TextField fx:id="opponentUsername"></TextField>
     </VBox>
+
+    <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" spacing="10" >
+        <Button HBox.hgrow="ALWAYS" maxWidth="200" onMouseClicked="#goToPanel">Back</Button>
+        <Button HBox.hgrow="ALWAYS" maxWidth="200" onMouseClicked="#startGame">Start</Button>
+    </HBox>
 
 </GridPane>
