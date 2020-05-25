@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.chart.NumberAxis?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="controller.NewGameController"
+          prefHeight="400.0" prefWidth="600.0"
+          hgap="10" vgap="10" alignment="CENTER">
+    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
+        <Label>Turn limit</Label>
+        <Label>(Put 0 for no limit)</Label>
+        <NumberAxis
+
+    </VBox>
+
+</GridPane>
