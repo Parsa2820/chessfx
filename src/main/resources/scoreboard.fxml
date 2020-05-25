@@ -9,21 +9,44 @@
 <?import javafx.scene.control.skin.TableHeaderRow?>
 <?import javafx.collections.FXCollections?>
 <?import model.User?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.ScoreboardController"
           prefHeight="400.0" prefWidth="600.0"
           hgap="10" vgap="10" alignment="CENTER">
     <Label GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">Scoreboard</Label>
-    <ScrollPane GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <TableView>
+    <ScrollPane fitToWidth="true" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <TableView fx:id="scoreboard" GridPane.hgrow="ALWAYS">
             <columns>
-                <TableColumn text="Username"/>
-                <TableColumn text="Score"/>
-                <TableColumn text="Win"/>
-                <TableColumn text="Draw"/>
-                <TableColumn text="Lose"/>
+                <TableColumn text="Username">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="username"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Score">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="score"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Win">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="winSum"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Draw">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="draw"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Lose">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="loseSum"/>
+                    </cellValueFactory>
+                </TableColumn>
             </columns>
         </TableView>
     </ScrollPane>
+    <Button onMouseClicked="#goToPanel" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+            GridPane.hgrow="ALWAYS" >Back</Button>
 </GridPane>

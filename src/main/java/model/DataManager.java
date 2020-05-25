@@ -29,7 +29,7 @@ public class DataManager {
         fileOutputStream.close();
     }
 
-    public static ArrayList<User> getUsersSer() throws IOException, ClassNotFoundException {
+    public static ArrayList<User> getUsers() throws IOException, ClassNotFoundException {
         FileInputStream fileInputStream = new FileInputStream(usersSer);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         ArrayList<User> usersArrayList = (ArrayList<User>) objectInputStream.readObject();
@@ -39,13 +39,13 @@ public class DataManager {
     }
 
     public static void addUser(User user) throws IOException, ClassNotFoundException {
-        ArrayList<User> users = getUsersSer();
+        ArrayList<User> users = getUsers();
         users.add(user);
         updateUsers(users);
     }
 
     public static User getUserByUsername(String username) throws IOException, ClassNotFoundException {
-        ArrayList<User> users = getUsersSer();
+        ArrayList<User> users = getUsers();
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 return user;
@@ -55,7 +55,7 @@ public class DataManager {
     }
 
     public static void deleteUser(String username) throws IOException, ClassNotFoundException {
-        ArrayList<User> users = getUsersSer();
+        ArrayList<User> users = getUsers();
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 users.remove(user);

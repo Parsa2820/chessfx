@@ -11,6 +11,7 @@ public class User implements Serializable {
     private int resignWin;
     private int winSum;
     private int loseSum;
+    private int score;
 
     public User(String username, String password) {
         this.username = username;
@@ -38,8 +39,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int calculateScore() {
-        return win * 3 + resignWin * 2 + draw - resignLose;
+    public int getScore() {
+        score = win * 3 + resignWin * 2 + draw - resignLose;
+        return score;
     }
 
     public int getWin() {

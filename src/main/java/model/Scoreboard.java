@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Scoreboard {
 
-    private static ArrayList<User> getSortedScoreBoard() throws IOException, ClassNotFoundException {
-        ArrayList<User> users = DataManager.getUsersSer();
+    public static ArrayList<User> getSortedScoreBoard() throws IOException, ClassNotFoundException {
+        ArrayList<User> users = DataManager.getUsers();
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.size()-1; j++) {
-                if (users.get(j).calculateScore() < users.get(j+1).calculateScore()) {
+                if (users.get(j).getScore() < users.get(j+1).getScore()) {
                     swapArrayListMemberWithRightOne(users, j);
-                } else if (users.get(j).calculateScore() == users.get(j+1).calculateScore()) {
+                } else if (users.get(j).getScore() == users.get(j+1).getScore()) {
                     if (users.get(j).getWinSum() < users.get(j+1).getWinSum()) {
                         swapArrayListMemberWithRightOne(users, j);
                     } else if (users.get(j).getWinSum() == users.get(j+1).getWinSum()) {
