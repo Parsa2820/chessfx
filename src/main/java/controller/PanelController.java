@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -24,11 +25,12 @@ public class PanelController implements Initializable {
         SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.SCOREBOARD);
     }
 
-    public void onNewGameButtonClick(MouseEvent mouseEvent) {
+    public void onNewGameButtonClick(MouseEvent mouseEvent) throws IOException {
+        SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.NEW_GAME);
     }
 
     public void greet() {
-        greetMessage.setText("Welcome dear " + Session.getSingletonInstance().getOnlineUser().getUsername());
+        greetMessage.setText("Welcome " + Session.getSingletonInstance().getOnlineUser().getUsername());
     }
 
     @Override

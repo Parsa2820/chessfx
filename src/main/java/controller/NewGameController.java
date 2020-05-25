@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.DataManager;
+import model.Game;
+import model.Session;
 import model.User;
 
 import java.io.IOException;
@@ -34,7 +36,9 @@ public class NewGameController implements Initializable {
             newGameMessage.setText("Wrong opponent username");
             return;
         }
-        // Todo start game
+        Game game = new Game(Session.getSingletonInstance().getOnlineUser(), opponent, undoMove, turnLimit);
+        Session.getSingletonInstance().setRunningGame(game);
+        SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.GAME);
     }
 
     @Override

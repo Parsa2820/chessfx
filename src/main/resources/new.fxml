@@ -13,15 +13,15 @@
           prefHeight="400.0" prefWidth="600.0"
           hgap="10" vgap="10" alignment="CENTER">
 
-    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" spacing="10">
+    <VBox alignment="CENTER" GridPane.rowIndex="1" GridPane.columnIndex="1" spacing="10">
         <Label fx:id="newGameMessage"/>
         <Label>Turn limit</Label>
         <Label>(Put 0 for no limit)</Label>
-        <TextField fx:id="turnLimitTextField"></TextField>
+        <TextField fx:id="turnLimitTextField" maxWidth="100"></TextField>
         <Label>Undo move</Label>
-        <TextField fx:id="undoMoveTextField"></TextField>
+        <TextField fx:id="undoMoveTextField" maxWidth="100"></TextField>
         <Label>Opponent username</Label>
-        <TextField fx:id="opponentUsername"></TextField>
+        <TextField fx:id="opponentUsername" maxWidth="200"></TextField>
     </VBox>
 
     <HBox alignment="CENTER" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" spacing="10" >

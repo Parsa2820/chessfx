@@ -83,12 +83,12 @@ public class SceneHandler {
     public static final RawScene NEW_GAME = new RawScene() {
         @Override
         public String getFileName() {
-            return null;
+            return "../new.fxml";
         }
 
         @Override
         public String getWindowTitle() {
-            return null;
+            return "ChessFX — New game";
         }
     };
 
@@ -101,6 +101,18 @@ public class SceneHandler {
         @Override
         public String getWindowTitle() {
             return "ChessFX — Scoreboard";
+        }
+    };
+
+    public static final RawScene GAME = new RawScene() {
+        @Override
+        public String getFileName() {
+            return "../game.fxml";
+        }
+
+        @Override
+        public String getWindowTitle() {
+            return "ChessFX — Game";
         }
     };
 

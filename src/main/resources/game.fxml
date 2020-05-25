@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.skin.ColorPalette.ColorSquare?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.GameController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <top>
+        <Label></Label>
+    </top>
+
+    <bottom>
+
+    </bottom>
+
+    <right>
+        <ScrollPane>
+            <TableView fx:id="whiteMoves"></TableView>
+        </ScrollPane>
+    </right>
+
+    <left>
+        <ScrollPane>
+            <TableView fx:id="blackMoves"></TableView>
+        </ScrollPane>
+    </left>
+
+    <center>
+        <TilePane>
+        </TilePane>
+    </center>
+
+
+</BorderPane>
