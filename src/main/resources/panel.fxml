@@ -7,7 +7,7 @@
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.PanelController"
           alignment="CENTER"
-          prefHeight="400.0" prefWidth="600.0">
+          prefHeight="800.0" prefWidth="1200.0">
     <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="10">
         <Label fx:id="greetMessage">kk</Label>
         <Button onMouseClicked="#onNewGameButtonClick">New game</Button>

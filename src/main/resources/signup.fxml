@@ -7,7 +7,7 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.SignUpController"
             alignment="CENTER"
-            prefHeight="400.0" prefWidth="600.0"
+            prefHeight="800.0" prefWidth="1200.0"
             vgap="10"
             hgap="10">
     <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="CENTER" GridPane.valignment="TOP" spacing="10">

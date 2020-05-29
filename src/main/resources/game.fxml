@@ -3,35 +3,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.skin.ColorPalette.ColorSquare?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.GameController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
 
     <top>
-        <Label></Label>
+        <VBox alignment="CENTER">
+            <Label>felan vs folan</Label>
+        </VBox>
     </top>
 
     <bottom>
-
+        <HBox alignment="CENTER" spacing="10">
+            <Button>Forfeit</Button>
+            <Button>Undo</Button>
+        </HBox>
     </bottom>
 
     <right>
-        <ScrollPane>
-            <TableView fx:id="whiteMoves"></TableView>
+        <ScrollPane fitToHeight="true">
+            <TableView fx:id="whiteMoves" />
         </ScrollPane>
     </right>
 
     <left>
-        <ScrollPane>
-            <TableView fx:id="blackMoves"></TableView>
+        <ScrollPane fitToHeight="true">
+            <TableView fx:id="blackMoves" />
         </ScrollPane>
     </left>
 
     <center>
-        <TilePane>
-        </TilePane>
+        <fx:include fx:id="board" source="board.fxml"/>
     </center>
 
 

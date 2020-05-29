@@ -10,7 +10,7 @@
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.PrimaryController"
           alignment="CENTER"
-          prefHeight="400.0" prefWidth="600.0">
+          prefHeight="800.0" prefWidth="1200.0">
     <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="10">
         <Label>ChessFX</Label>
         <ImageView>

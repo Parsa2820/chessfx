@@ -1,0 +1,7 @@
+.blackSquare {
+    -fx-background-color: darkgreen;
+}
+
+.whiteSquare {
+    -fx-background-color: yellow;
+}

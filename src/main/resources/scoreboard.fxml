@@ -13,7 +13,7 @@
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="controller.ScoreboardController"
-          prefHeight="400.0" prefWidth="600.0"
+          prefHeight="800.0" prefWidth="1200.0"
           hgap="10" vgap="10" alignment="CENTER">
     <Label GridPane.halignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">Scoreboard</Label>
     <ScrollPane fitToWidth="true" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="2">
