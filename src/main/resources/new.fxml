@@ -9,7 +9,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="controller.NewGameController"
+          fx:controller="controller.panel.NewGameController"
           prefHeight="800.0" prefWidth="1200.0"
           hgap="10" vgap="10" alignment="CENTER">
 

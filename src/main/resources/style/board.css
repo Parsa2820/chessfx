@@ -5,3 +5,7 @@
 .whiteSquare {
     -fx-background-color: yellow;
 }
+
+.corner {
+    -fx-background-color: lightgrey;
+}

@@ -1,16 +1,19 @@
-package controller;
+package controller.panel;
 
+import controller.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.DataManager;
-import model.Game;
-import model.Session;
-import model.User;
+import model.game.Game;
+import model.user.Session;
+import model.user.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +41,7 @@ public class NewGameController implements Initializable {
         }
         Game game = new Game(Session.getSingletonInstance().getOnlineUser(), opponent, undoMove, turnLimit);
         Session.getSingletonInstance().setRunningGame(game);
+
         SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.GAME);
     }
 

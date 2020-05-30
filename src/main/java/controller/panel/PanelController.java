@@ -1,13 +1,13 @@
-package controller;
+package controller.panel;
 
+import controller.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Session;
+import model.user.Session;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

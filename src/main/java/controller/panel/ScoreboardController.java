@@ -1,5 +1,6 @@
-package controller;
+package controller.panel;
 
+import controller.SceneHandler;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,8 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Scoreboard;
-import model.User;
+import model.user.Scoreboard;
+import model.user.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

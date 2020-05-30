@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class GraphicalUserInterface extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        SceneHandler.showScene(stage, SceneHandler.GAME);
+        SceneHandler.showScene(stage, SceneHandler.PRIMARY);
     }
 
     public static void runGui(String[] args) {

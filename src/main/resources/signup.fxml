@@ -5,7 +5,7 @@
 
 <GridPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.SignUpController"
+            fx:controller="controller.account.SignUpController"
             alignment="CENTER"
             prefHeight="800.0" prefWidth="1200.0"
             vgap="10"

@@ -1,5 +1,6 @@
-package controller;
+package controller.panel;
 
+import controller.SceneHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;

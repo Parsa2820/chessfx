@@ -1,4 +1,6 @@
-package model;
+package model.user;
+
+import model.DataManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
