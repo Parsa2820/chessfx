@@ -21,13 +21,11 @@ public abstract class Piece {
         this.currentLocation = currentLocation;
         this.lightColor = lightColor;
         this.name = name;
-        if (lightColor) {
-            String pathToIcon = "piece/" +
-                    name +
-                    (lightColor ? 'w' : 'b') +
-                    ".png";
-            pieceIcon = new Image(pathToIcon);
-        }
+        String pathToIcon = "piece/" +
+                name +
+                (lightColor ? 'w' : 'b') +
+                ".png";
+        pieceIcon = new Image(pathToIcon);
     }
 
     public Location getCurrentLocation() {
@@ -62,6 +60,6 @@ public abstract class Piece {
         this.name = name;
     }
 
-    abstract boolean canMoveTo(Location destination);
+    public abstract boolean canMoveTo(Location destination);
 
 }

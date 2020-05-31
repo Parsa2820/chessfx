@@ -10,7 +10,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    boolean canMoveTo(Location destination) {
+    public boolean canMoveTo(Location destination) {
         Piece[][] board = Session.getSingletonInstance().getRunningGame().getBoard();
         if (lightColor) {
             if (currentLocation.getRow() == 2 && destination.getRow() == 4 &&

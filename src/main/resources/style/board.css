@@ -1,9 +1,9 @@
 .blackSquare {
-    -fx-background-color: darkgreen;
+    -fx-background-color: lightgreen;
 }
 
 .whiteSquare {
-    -fx-background-color: yellow;
+    -fx-background-color: lightyellow;
 }
 
 .corner {

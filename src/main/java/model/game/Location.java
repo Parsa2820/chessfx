@@ -10,6 +10,11 @@ public class Location {
         this.row = row;
     }
 
+    public Location(String alphaNum) {
+        row = 9 - alphaNum.charAt(1) - 48;
+        column = (int) alphaNum.charAt(0) - 96;
+    }
+
     public int getRow() {
         return row;
     }

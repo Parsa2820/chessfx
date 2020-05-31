@@ -8,7 +8,8 @@ public class King extends Piece {
     }
 
     @Override
-    boolean canMoveTo(Location destination) {
-        return false;
+    public boolean canMoveTo(Location destination) {
+        return Math.abs(destination.getRow()-currentLocation.getRow()) <= 1 &&
+                Math.abs(destination.getColumn()-currentLocation.getColumn()) <= 1;
     }
 }

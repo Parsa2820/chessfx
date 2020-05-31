@@ -2,9 +2,15 @@ package controller.game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import model.game.Game;
+import model.game.Location;
 import model.game.piece.Piece;
 import model.user.Session;
 
@@ -13,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
 
+    @FXML private GridPane boardGridPane;
+    @FXML private Label rivalsLabel;
     @FXML private ImageView a1;
     @FXML private ImageView a2;
     @FXML private ImageView a3;
@@ -81,10 +89,16 @@ public class GameController implements Initializable {
     @FXML private TableView blackMoves;
     @FXML private TableView whiteMoves;
 
+    private Game game;
+
     private ImageView[][] boardImageView = new ImageView[9][9];
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        game = Session.getSingletonInstance().getRunningGame();
+        rivalsLabel.setText(game.getWhitePlayer().getUsername() + "(white)" +
+                " vs " + game.getBlackPlayer().getUsername() + "(black)");
+
         boardImageView[1][1] = a1;
         boardImageView[1][2] = b1;
         boardImageView[1][3] = c1;
@@ -150,7 +164,7 @@ public class GameController implements Initializable {
         boardImageView[8][7] = g8;
         boardImageView[8][8] = h8;
 
-        Piece[][] board = Session.getSingletonInstance().getRunningGame().getBoard();
+        Piece[][] board = game.getBoard();
 
         for (int i = 1; i <= 8; i++) {
             for (int j = 1; j <= 8; j++) {
@@ -162,6 +176,7 @@ public class GameController implements Initializable {
     }
 
     public void selectMove(MouseEvent mouseEvent) {
-
+        ImageView src = (ImageView) mouseEvent.getSource();
+        game.selectMove(new Location(src.getId()));
     }
 }

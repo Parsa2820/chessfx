@@ -1,41 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.game.GameController">
 
     <top>
         <VBox alignment="CENTER">
-            <Label>felan vs folan</Label>
+            <Label fx:id="rivalsLabel" text="null" textAlignment="CENTER" underline="true">
+            <font>
+               <Font size="32.0" />
+            </font></Label>
+         <Label fx:id="messageLabel" text="message to players">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Label>
         </VBox>
     </top>
 
     <bottom>
         <HBox alignment="CENTER" spacing="10">
-            <Button>Forfeit</Button>
-            <Button>Undo</Button>
+            <Button style="-fx-background-color: pink;" text="Forfeit">
+            <font>
+               <Font size="20.0" />
+            </font></Button>
+            <Button style="-fx-background-color: skyblue;" text="Undo">
+            <font>
+               <Font size="20.0" />
+            </font></Button>
+         <Button mnemonicParsing="false" style="-fx-background-color: lightgreen;" text="Next turn">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
         </HBox>
     </bottom>
 
     <right>
         <ScrollPane fitToHeight="true">
-            <TableView fx:id="whiteMoves" />
+            <TableView fx:id="blackMoves" />
         </ScrollPane>
     </right>
 
     <left>
         <ScrollPane fitToHeight="true">
-            <TableView fx:id="blackMoves" />
+            <TableView fx:id="whiteMoves" />
         </ScrollPane>
     </left>
 
     <center>
-        <GridPane alignment="CENTER" gridLinesVisible="true" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" stylesheets="@style/board.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+        <GridPane fx:id="boardGridPane" alignment="CENTER" gridLinesVisible="true" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" stylesheets="@style/board.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="5.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -332,55 +349,55 @@
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="5" GridPane.rowIndex="6">
                     <children>
-                        <ImageView fx:id="e2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="e2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="94.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackSquare" GridPane.columnIndex="4" GridPane.rowIndex="6">
                     <children>
-                        <ImageView fx:id="d2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="d2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="3" GridPane.rowIndex="6">
                     <children>
-                        <ImageView fx:id="c2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="c2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="94.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackSquare" GridPane.columnIndex="2" GridPane.rowIndex="6">
                     <children>
-                        <ImageView fx:id="b2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="b2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="1" GridPane.rowIndex="6">
                     <children>
-                        <ImageView fx:id="a2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="a2" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="94.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackSquare" GridPane.columnIndex="7" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="g3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="g3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="6" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="f3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="f3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="94.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackSquare" GridPane.columnIndex="5" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="e3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="e3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="4" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="d3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="d3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="94.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackSquare" GridPane.columnIndex="3" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="c3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="c3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="2" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="b3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="b3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="94.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="blackSquare" GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="a3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="a3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
                 <Pane layoutX="35.0" layoutY="249.0" prefHeight="200.0" prefWidth="200.0" styleClass="whiteSquare" GridPane.columnIndex="8" GridPane.rowIndex="5">
                     <children>
-                        <ImageView fx:id="h3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="h3" fitHeight="59.0" fitWidth="59.0" layoutY="1.0" onMouseClicked="#selectMove" pickOnBounds="true" preserveRatio="true" />
                     </children></Pane>
             </children>
         </GridPane>

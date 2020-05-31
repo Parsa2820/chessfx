@@ -13,6 +13,7 @@ public class Game {
     private int turnLimit;
     private ArrayList<Move> moves;
     private Piece[][] board = new Piece[9][9];
+    private Piece selectedPiece;
 
     public Game(User whitePlayer, User blackPlayer, int undoMove, int turnLimit) {
         this.whitePlayer = whitePlayer;
@@ -22,6 +23,14 @@ public class Game {
         this.turnLimit = turnLimit;
         moves = new ArrayList<>();
         initializeBoard();
+    }
+
+    public Piece getSelectedPiece() {
+        return selectedPiece;
+    }
+
+    public void setSelectedPiece(Piece selectedPiece) {
+        this.selectedPiece = selectedPiece;
     }
 
     private void initializeBoard() {
@@ -100,6 +109,27 @@ public class Game {
 
     public Piece[][] getBoard() {
         return board;
+    }
+
+    public boolean selectMove(Location location) {
+        if (isLocationEmpty(location)) {
+            if (selectedPiece != null) {
+                if (selectedPiece.canMoveTo(location)) {
+                    move();
+                    return false;
+                }
+            }
+        }
+        selectedPiece = board[location.getRow()][location.getColumn()];
+        return true;
+    }
+
+    private boolean isLocationEmpty(Location location) {
+        return board[location.getRow()][location.getColumn()] == null;
+    }
+
+    private void move() {
+
     }
 }
 
