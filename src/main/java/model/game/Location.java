@@ -11,7 +11,7 @@ public class Location {
     }
 
     public Location(String alphaNum) {
-        row = 9 - alphaNum.charAt(1) - 48;
+        row = (int) alphaNum.charAt(1) - 48;
         column = (int) alphaNum.charAt(0) - 96;
     }
 

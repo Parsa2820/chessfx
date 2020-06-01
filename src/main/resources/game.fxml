@@ -13,7 +13,12 @@
             <font>
                <Font size="32.0" />
             </font></Label>
-         <Label fx:id="messageLabel" text="message to players">
+         <Label fx:id="turnLabel" text="White turn to move" textAlignment="CENTER">
+            <font>
+               <Font size="25.0" />
+            </font>
+         </Label>
+         <Label fx:id="messageLabel" text="message to players" textAlignment="CENTER">
             <font>
                <Font size="25.0" />
             </font>
@@ -27,11 +32,11 @@
             <font>
                <Font size="20.0" />
             </font></Button>
-            <Button style="-fx-background-color: skyblue;" text="Undo">
+            <Button onMouseClicked="#onUndoClick" style="-fx-background-color: skyblue;" text="Undo">
             <font>
                <Font size="20.0" />
             </font></Button>
-         <Button mnemonicParsing="false" style="-fx-background-color: lightgreen;" text="Next turn">
+         <Button mnemonicParsing="false" onMouseClicked="#onNextTurnClick" style="-fx-background-color: lightgreen;" text="Next turn">
             <font>
                <Font size="20.0" />
             </font>

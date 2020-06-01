@@ -11,6 +11,7 @@ public class Game {
     private int whiteUndoLeft;
     private int blackUndoLeft;
     private int turnLimit;
+    private Move stagedMove;
     private ArrayList<Move> moves;
     private Piece[][] board = new Piece[9][9];
     private Piece selectedPiece;
@@ -111,28 +112,59 @@ public class Game {
         return board;
     }
 
-    public boolean selectMove(Location location) {
-        if (isLocationEmpty(location)) {
+    public SelectMoveType selectMove(Location location) {
+        if (board[location.getRow()][location.getColumn()] == null ||
+                board[location.getRow()][location.getColumn()].isLightColor() != isLightColorTurn()) {
             if (selectedPiece != null) {
                 if (selectedPiece.canMoveTo(location)) {
-                    move();
-                    return false;
+                    if (stagedMove == null){
+                        move(location);
+                        return SelectMoveType.MOVED;
+                    } else {
+                        return SelectMoveType.ALREADY_MOVED;
+                    }
+                } else {
+                    return SelectMoveType.CAN_NOT_MOVE;
                 }
+            } else {
+                return SelectMoveType.CAN_NOT_SELECT;
             }
+        } else {
+            selectedPiece = board[location.getRow()][location.getColumn()];
+            return SelectMoveType.SELECTED;
         }
-        selectedPiece = board[location.getRow()][location.getColumn()];
-        return true;
     }
 
-    private boolean isLocationEmpty(Location location) {
-        return board[location.getRow()][location.getColumn()] == null;
+    private void move(Location location) {
+        stagedMove = new Move(selectedPiece, selectedPiece.getCurrentLocation(),
+                location, board[location.getRow()][location.getColumn()]);
+        board[location.getRow()][location.getColumn()] = selectedPiece;
+        board[selectedPiece.getCurrentLocation().getRow()][selectedPiece.getCurrentLocation().getColumn()] = null;
+        selectedPiece.setCurrentLocation(location);
+        selectedPiece = null;
     }
 
-    private void move() {
-
+    public boolean undo() {
+        if ((isLightColorTurn() && whiteUndoLeft-- > 0) || (!isLightColorTurn() && blackUndoLeft-- > 0)) {
+            board[stagedMove.start.getRow()][stagedMove.start.getColumn()] = stagedMove.piece;
+            board[stagedMove.end.getRow()][stagedMove.end.getColumn()] = stagedMove.killed;
+            selectedPiece = null;
+            stagedMove = null;
+            return true;
+        }
+        return false;
     }
-}
 
-class Move {
+    public boolean nextTurn() {
+        if (stagedMove != null) {
+            moves.add(stagedMove);
+            stagedMove = null;
+            return true;
+        }
+        return false;
+    }
 
+    public boolean isLightColorTurn() {
+        return moves.size() % 2 == 0;
+    }
 }

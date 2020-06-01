@@ -2,7 +2,6 @@ package controller.game;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.effect.MotionBlur;
@@ -19,6 +18,8 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
 
+    public Label turnLabel;
+    @FXML private Label messageLabel;
     @FXML private GridPane boardGridPane;
     @FXML private Label rivalsLabel;
     @FXML private ImageView a1;
@@ -164,12 +165,18 @@ public class GameController implements Initializable {
         boardImageView[8][7] = g8;
         boardImageView[8][8] = h8;
 
+        updateBoard();
+    }
+
+    private void updateBoard() {
         Piece[][] board = game.getBoard();
 
         for (int i = 1; i <= 8; i++) {
             for (int j = 1; j <= 8; j++) {
                 if (board[i][j] != null) {
                     boardImageView[i][j].setImage(board[i][j].getPieceIcon());
+                } else {
+                    boardImageView[i][j].setImage(null);
                 }
             }
         }
@@ -177,6 +184,52 @@ public class GameController implements Initializable {
 
     public void selectMove(MouseEvent mouseEvent) {
         ImageView src = (ImageView) mouseEvent.getSource();
-        game.selectMove(new Location(src.getId()));
+
+        Piece selected = game.getSelectedPiece();
+        Location preLocation = null;
+        if (selected != null) {
+            preLocation = selected.getCurrentLocation();
+        }
+        Location location = new Location(src.getId());
+
+        System.out.println(location.getColumn());
+        System.out.println(location.getRow());
+
+        switch (game.selectMove(location)) {
+
+            case SELECTED:
+                messageLabel.setText(src.getId() + " selected");
+                break;
+            case MOVED:
+                boardImageView[location.getRow()][location.getColumn()].setImage(selected.getPieceIcon());
+                boardImageView[preLocation.getRow()][preLocation.getColumn()].setImage(null);
+                messageLabel.setText("Moved");
+                break;
+            case CAN_NOT_SELECT:
+                messageLabel.setText("Can not select this square");
+                break;
+            case CAN_NOT_MOVE:
+                messageLabel.setText("Can not move to this square");
+                break;
+            case ALREADY_MOVED:
+                messageLabel.setText("You already moved");
+        }
+    }
+
+    public void onUndoClick(MouseEvent mouseEvent) {
+        if (game.undo()) {
+           messageLabel.setText("Undo done");
+           updateBoard();
+        } else {
+            messageLabel.setText("You have no undos left");
+        }
+    }
+
+    public void onNextTurnClick(MouseEvent mouseEvent) {
+        if (game.nextTurn()) {
+            turnLabel.setText("It is " + ( game.isLightColorTurn() ? "white" : "black" ) + " turn");
+        } else {
+            messageLabel.setText("Move then click next turn button");
+        }
     }
 }
