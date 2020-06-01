@@ -14,11 +14,4 @@ public class Move {
         this.end = end;
         this.killed = killed;
     }
-
-    public Move(Piece piece, Location start, Location end) {
-        this.piece = piece;
-        this.start = start;
-        this.end = end;
-        killed = null;
-    }
 }

@@ -28,7 +28,7 @@
 
     <bottom>
         <HBox alignment="CENTER" spacing="10">
-            <Button style="-fx-background-color: pink;" text="Forfeit">
+            <Button onMouseClicked="#onForfeitClick" style="-fx-background-color: pink;" text="Forfeit">
             <font>
                <Font size="20.0" />
             </font></Button>

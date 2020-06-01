@@ -1,5 +1,7 @@
 package model.game;
 
+import controller.SceneHandler;
+import model.DataManager;
 import model.game.piece.*;
 import model.user.User;
 
@@ -145,9 +147,10 @@ public class Game {
     }
 
     public boolean undo() {
-        if ((isLightColorTurn() && whiteUndoLeft-- > 0) || (!isLightColorTurn() && blackUndoLeft-- > 0)) {
+        if (stagedMove != null && (isLightColorTurn() && whiteUndoLeft-- > 0) || (!isLightColorTurn() && blackUndoLeft-- > 0)) {
             board[stagedMove.start.getRow()][stagedMove.start.getColumn()] = stagedMove.piece;
             board[stagedMove.end.getRow()][stagedMove.end.getColumn()] = stagedMove.killed;
+            stagedMove.piece.setCurrentLocation(stagedMove.start);
             selectedPiece = null;
             stagedMove = null;
             return true;
@@ -159,6 +162,7 @@ public class Game {
         if (stagedMove != null) {
             moves.add(stagedMove);
             stagedMove = null;
+            selectedPiece = null;
             return true;
         }
         return false;
@@ -166,5 +170,27 @@ public class Game {
 
     public boolean isLightColorTurn() {
         return moves.size() % 2 == 0;
+    }
+
+    public void forfeit() {
+        if (isLightColorTurn()) {
+            whitePlayer.addResignLose();
+            blackPlayer.addResignWin();
+        } else {
+            whitePlayer.addResignWin();
+            blackPlayer.addResignLose();
+        }
+        updateUsers();
+    }
+
+    private void updateUsers() {
+        try {
+            DataManager.deleteUser(blackPlayer.getUsername());
+            DataManager.deleteUser(whitePlayer.getUsername());
+            DataManager.addUser(whitePlayer);
+            DataManager.addUser(blackPlayer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

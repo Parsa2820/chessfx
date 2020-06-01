@@ -39,6 +39,10 @@ public class NewGameController implements Initializable {
             newGameMessage.setText("Wrong opponent username");
             return;
         }
+        if (Session.getSingletonInstance().getOnlineUser().getUsername().equals(opponent.getUsername())) {
+            newGameMessage.setText("You can not play with yourself :|");
+            return;
+        }
         Game game = new Game(Session.getSingletonInstance().getOnlineUser(), opponent, undoMove, turnLimit);
         Session.getSingletonInstance().setRunningGame(game);
 

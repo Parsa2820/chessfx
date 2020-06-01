@@ -38,6 +38,7 @@ public class ChangePasswordController {
         DataManager.addUser(newUser);
         Alert passwordSuccessfullyChanged = new Alert(Alert.AlertType.INFORMATION, "Password successfully changed",
                 ButtonType.OK);
+        passwordSuccessfullyChanged.setResizable(true);
         passwordSuccessfullyChanged.showAndWait();
         SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PRIMARY);
     }

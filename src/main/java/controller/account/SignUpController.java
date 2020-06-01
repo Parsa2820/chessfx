@@ -30,6 +30,7 @@ public class SignUpController {
         DataManager.addUser(new User(username.getText(), password.getText()));
         Alert signedUpSuccessfully = new Alert(Alert.AlertType.INFORMATION, "User successfully created",
                 ButtonType.OK);
+        signedUpSuccessfully.setResizable(true);
         signedUpSuccessfully.showAndWait();
         SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PRIMARY);
     }

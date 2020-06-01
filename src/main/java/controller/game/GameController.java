@@ -1,18 +1,27 @@
 package controller.game;
 
+import controller.SceneHandler;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import model.game.Game;
 import model.game.Location;
 import model.game.piece.Piece;
 import model.user.Session;
+import model.user.User;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -192,9 +201,6 @@ public class GameController implements Initializable {
         }
         Location location = new Location(src.getId());
 
-        System.out.println(location.getColumn());
-        System.out.println(location.getRow());
-
         switch (game.selectMove(location)) {
 
             case SELECTED:
@@ -231,5 +237,14 @@ public class GameController implements Initializable {
         } else {
             messageLabel.setText("Move then click next turn button");
         }
+    }
+
+    public void onForfeitClick(MouseEvent mouseEvent) throws IOException {
+        game.forfeit();
+        User winner = game.isLightColorTurn() ? game.getBlackPlayer() : game.getWhitePlayer();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "The winner is " + winner.getUsername(), ButtonType.OK);
+        alert.setResizable(true);
+        alert.showAndWait();
+        SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PANEL);
     }
 }
