@@ -115,6 +115,12 @@ public class Game {
 
     public NextTurnState nextTurn() {
         if (stagedMove != null) {
+            if (stagedMove.piece instanceof Pawn) {
+                if (stagedMove.piece.getCurrentLocation().getRow() == 8 || stagedMove.piece.getCurrentLocation().getRow() == 1) {
+                    stagedMove.piece = new Queen(stagedMove.piece.getCurrentLocation(), stagedMove.piece.isLightColor());
+                }
+                board[stagedMove.piece.getCurrentLocation().getRow()][stagedMove.piece.getCurrentLocation().getColumn()] = stagedMove.piece;
+            }
             moves.add(stagedMove);
             stagedMove = null;
             selectedPiece = null;

@@ -247,6 +247,7 @@ public class GameController implements Initializable {
                 SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PANEL);
                 break;
         }
+        updateBoard();
     }
 
     public void onForfeitClick(MouseEvent mouseEvent) throws IOException {
