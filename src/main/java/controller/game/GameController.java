@@ -1,19 +1,14 @@
 package controller.game;
 
 import controller.SceneHandler;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.effect.MotionBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.game.Game;
 import model.game.Location;
@@ -29,7 +24,6 @@ public class GameController implements Initializable {
 
     public Label turnLabel;
     @FXML private Label messageLabel;
-    @FXML private GridPane boardGridPane;
     @FXML private Label rivalsLabel;
     @FXML private ImageView a1;
     @FXML private ImageView a2;
@@ -96,12 +90,9 @@ public class GameController implements Initializable {
     @FXML private ImageView h7;
     @FXML private ImageView h8;
 
-    @FXML private TableView blackMoves;
-    @FXML private TableView whiteMoves;
-
     private Game game;
 
-    private ImageView[][] boardImageView = new ImageView[9][9];
+    private final ImageView[][] boardImageView = new ImageView[9][9];
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -207,6 +198,7 @@ public class GameController implements Initializable {
                 messageLabel.setText(src.getId() + " selected");
                 break;
             case MOVED:
+                assert selected != null;
                 boardImageView[location.getRow()][location.getColumn()].setImage(selected.getPieceIcon());
                 boardImageView[preLocation.getRow()][preLocation.getColumn()].setImage(null);
                 messageLabel.setText("Moved");
@@ -222,27 +214,46 @@ public class GameController implements Initializable {
         }
     }
 
-    public void onUndoClick(MouseEvent mouseEvent) {
+    public void onUndoClick() {
         if (game.undo()) {
            messageLabel.setText("Undo done");
            updateBoard();
         } else {
-            messageLabel.setText("You have no undos left");
+            messageLabel.setText("You have no undo left");
         }
     }
 
-    public void onNextTurnClick(MouseEvent mouseEvent) {
-        if (game.nextTurn()) {
-            turnLabel.setText("It is " + ( game.isLightColorTurn() ? "white" : "black" ) + " turn");
-        } else {
-            messageLabel.setText("Move then click next turn button");
+    public void onNextTurnClick(MouseEvent mouseEvent) throws IOException {
+
+        switch (game.nextTurn()) {
+
+            case NO_MOVE_DONE:
+                messageLabel.setText("Move then click next turn button");
+                break;
+            case MOVE_DONE:
+                turnLabel.setText("It is " + ( game.isLightColorTurn() ? "white" : "black" ) + " turn");
+                break;
+            case DRAW:
+                Alert drawAlert = new Alert(Alert.AlertType.INFORMATION, "Draw", ButtonType.OK);
+                drawAlert.setResizable(true);
+                drawAlert.showAndWait();
+                SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PANEL);
+                break;
+            case FINISHED_WITH_WINNER:
+                User winner = game.isLightColorTurn() ? game.getBlackPlayer() : game.getWhitePlayer();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "The winner is " + winner.getUsername(), ButtonType.OK);
+                alert.setResizable(true);
+                alert.showAndWait();
+                SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PANEL);
+                break;
         }
     }
 
     public void onForfeitClick(MouseEvent mouseEvent) throws IOException {
         game.forfeit();
         User winner = game.isLightColorTurn() ? game.getBlackPlayer() : game.getWhitePlayer();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "The winner is " + winner.getUsername(), ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "The winner is " + winner.getUsername() +
+                " (with opponent forfeit)", ButtonType.OK);
         alert.setResizable(true);
         alert.showAndWait();
         SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.PANEL);

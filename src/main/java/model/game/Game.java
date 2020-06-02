@@ -1,6 +1,5 @@
 package model.game;
 
-import controller.SceneHandler;
 import model.DataManager;
 import model.game.piece.*;
 import model.user.User;
@@ -158,14 +157,38 @@ public class Game {
         return false;
     }
 
-    public boolean nextTurn() {
+    public NextTurnState nextTurn() {
         if (stagedMove != null) {
             moves.add(stagedMove);
             stagedMove = null;
             selectedPiece = null;
-            return true;
+            return gameState();
         }
-        return false;
+        return NextTurnState.NO_MOVE_DONE;
+    }
+
+    private NextTurnState gameState() {
+        if (moves.get(moves.size()-1).killed instanceof King) {
+            finishedWithWinner();
+            return NextTurnState.FINISHED_WITH_WINNER;
+        }
+        if (turnLimit != 0 && moves.size() == turnLimit) {
+            draw();
+            return NextTurnState.DRAW;
+        }
+        return NextTurnState.MOVE_DONE;
+    }
+
+    private void finishedWithWinner() {
+        (isLightColorTurn() ? blackPlayer : whitePlayer).addWin();
+        (isLightColorTurn() ? whitePlayer : blackPlayer).addLose();
+        updateUsers();
+    }
+
+    private void draw() {
+        whitePlayer.addDraw();
+        blackPlayer.addDraw();
+        updateUsers();
     }
 
     public boolean isLightColorTurn() {
@@ -193,4 +216,6 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+
 }
