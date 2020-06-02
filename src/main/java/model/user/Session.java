@@ -3,7 +3,7 @@ package model.user;
 import model.game.Game;
 
 public class Session {
-    private static Session sessionSingleton = new Session();
+    private static final Session sessionSingleton = new Session();
     private User onlineUser;
     private Game runningGame;
 

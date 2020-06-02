@@ -2,8 +2,8 @@ package model.game;
 
 public class Location {
 
-    private int column;
-    private int row;
+    private final int column;
+    private final int row;
 
     public Location(int row, int column) {
         this.column = column;

@@ -34,7 +34,7 @@ public class DataManager {
     public static ArrayList<User> getUsers() throws IOException, ClassNotFoundException {
         FileInputStream fileInputStream = new FileInputStream(usersSer);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        ArrayList<User> usersArrayList = (ArrayList<User>) objectInputStream.readObject();
+        @SuppressWarnings("unchecked") ArrayList<User> usersArrayList = (ArrayList<User>) objectInputStream.readObject();
         objectInputStream.close();
         fileInputStream.close();
         return usersArrayList;

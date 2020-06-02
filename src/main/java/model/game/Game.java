@@ -7,14 +7,14 @@ import model.user.User;
 import java.util.ArrayList;
 
 public class Game {
-    private User whitePlayer;
-    private User blackPlayer;
+    private final User whitePlayer;
+    private final User blackPlayer;
     private int whiteUndoLeft;
     private int blackUndoLeft;
-    private int turnLimit;
+    private final int turnLimit;
     private Move stagedMove;
-    private ArrayList<Move> moves;
-    private Piece[][] board = new Piece[9][9];
+    private final ArrayList<Move> moves;
+    private final Piece[][] board = new Piece[9][9];
     private Piece selectedPiece;
 
     public Game(User whitePlayer, User blackPlayer, int undoMove, int turnLimit) {
@@ -29,10 +29,6 @@ public class Game {
 
     public Piece getSelectedPiece() {
         return selectedPiece;
-    }
-
-    public void setSelectedPiece(Piece selectedPiece) {
-        this.selectedPiece = selectedPiece;
     }
 
     private void initializeBoard() {
@@ -65,48 +61,8 @@ public class Game {
         return whitePlayer;
     }
 
-    public void setWhitePlayer(User whitePlayer) {
-        this.whitePlayer = whitePlayer;
-    }
-
     public User getBlackPlayer() {
         return blackPlayer;
-    }
-
-    public void setBlackPlayer(User blackPlayer) {
-        this.blackPlayer = blackPlayer;
-    }
-
-    public int getWhiteUndoLeft() {
-        return whiteUndoLeft;
-    }
-
-    public void setWhiteUndoLeft(int whiteUndoLeft) {
-        this.whiteUndoLeft = whiteUndoLeft;
-    }
-
-    public int getBlackUndoLeft() {
-        return blackUndoLeft;
-    }
-
-    public void setBlackUndoLeft(int blackUndoLeft) {
-        this.blackUndoLeft = blackUndoLeft;
-    }
-
-    public int getTurnLimit() {
-        return turnLimit;
-    }
-
-    public void setTurnLimit(int turnLimit) {
-        this.turnLimit = turnLimit;
-    }
-
-    public ArrayList<Move> getMoves() {
-        return moves;
-    }
-
-    public void setMoves(ArrayList<Move> moves) {
-        this.moves = moves;
     }
 
     public Piece[][] getBoard() {

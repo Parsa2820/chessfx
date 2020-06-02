@@ -24,7 +24,6 @@ public class SignUpController {
     public void signUp(MouseEvent mouseEvent) throws IOException, ClassNotFoundException {
         if (DataManager.getUserByUsername(username.getText()) != null) {
             signUpMessage.setText("This username is taken. Please try another username.");
-            // Todo change color to red
             return;
         }
         DataManager.addUser(new User(username.getText(), password.getText()));

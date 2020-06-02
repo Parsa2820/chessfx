@@ -2,10 +2,7 @@ package controller.panel;
 
 import controller.SceneHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -16,10 +13,8 @@ import model.user.Session;
 import model.user.User;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class NewGameController implements Initializable {
+public class NewGameController {
 
     @FXML private Label newGameMessage;
     @FXML private TextField turnLimitTextField;
@@ -47,10 +42,5 @@ public class NewGameController implements Initializable {
         Session.getSingletonInstance().setRunningGame(game);
 
         SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWindow(), SceneHandler.GAME);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Todo validate text fields for numerical input
     }
 }

@@ -40,24 +40,8 @@ public abstract class Piece {
         return pieceIcon;
     }
 
-    public void setPieceIcon(Image pieceIcon) {
-        this.pieceIcon = pieceIcon;
-    }
-
     public boolean isLightColor() {
         return lightColor;
-    }
-
-    public void setLightColor(boolean lightColor) {
-        this.lightColor = lightColor;
-    }
-
-    public char getName() {
-        return name;
-    }
-
-    public void setName(char name) {
-        this.name = name;
     }
 
     public abstract boolean canMoveTo(Location destination);

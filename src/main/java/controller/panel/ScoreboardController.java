@@ -23,10 +23,8 @@ public class ScoreboardController implements Initializable {
         ObservableList<User> data = scoreboard.getItems();
         try {
             data.addAll(Scoreboard.getSortedScoreBoard());
-        } catch (IOException ioException) {
+        } catch (IOException | ClassNotFoundException ioException) {
             ioException.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
     }
 

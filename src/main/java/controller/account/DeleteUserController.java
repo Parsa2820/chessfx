@@ -25,7 +25,6 @@ SceneHandler.showScene((Stage) ((Node) mouseEvent.getSource()).getScene().getWin
         User user = DataManager.getUserByUsername(username.getText());
         if (user == null) {
             deleteMessage.setText("Username not exists.");
-            // Todo change color to red
             return;
         } else if (!user.getPassword().equals(password.getText())) {
             deleteMessage.setText("Wrong password.");

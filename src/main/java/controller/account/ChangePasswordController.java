@@ -26,7 +26,6 @@ public class ChangePasswordController {
         User user = DataManager.getUserByUsername(username.getText());
         if (user == null) {
             changePasswordMessage.setText("Username not exists.");
-            // Todo change color to red
             return;
         } else if (!user.getPassword().equals(oldPassword.getText())) {
             changePasswordMessage.setText("Wrong password.");
